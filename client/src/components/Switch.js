@@ -33,9 +33,7 @@ function Switch() {
     useEffect(() => {
         axios
             .get("/users/user")
-            .then(res => {
-                setAllUsers(res.data)
-            })
+            .then(res => setAllUsers(res.data))
             .catch(err => console.log(err))
     }, [])
 
