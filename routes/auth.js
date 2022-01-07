@@ -56,8 +56,8 @@ router.put("/signup", isLoggedOut, (req, res, next) => {
                 let mailDetails = {
                     from: process.env.EMAIL,
                     to: email,
-                    subject: "Verify your account on Book a Band",
-                    html: `Hello,<br /><br />Thank you for creating your account on Book a Band! <a href="${process.env.ORIGIN}/verify/${verifyToken}/${user._id}">Click here to verify your account</a>.`,
+                    subject: "Verify your account on our app",
+                    html: `Hello,<br /><br />Thank you for creating your account on our app! <a href="${process.env.ORIGIN}/verify/${verifyToken}/${user._id}">Click here to verify your account</a>.`,
                 }
 
                 transporter.sendMail(mailDetails, (err, data) => {
