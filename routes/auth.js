@@ -189,7 +189,6 @@ router.put("/reset-password/:token/:id", (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))
         .then(hashedPassword => {
-            // Create a user and save it in the database
             return User.findByIdAndUpdate(req.params.id, {
                 password: hashedPassword,
             })
