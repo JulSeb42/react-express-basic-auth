@@ -7,7 +7,7 @@ function Input(props) {
 
     return (
         <div>
-            <label htmlFor={props.id}>{props.label}</label>
+            {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
             {props.inputtype === "password" ? (
                 <div>
@@ -18,10 +18,19 @@ function Input(props) {
                         {...props}
                     />
 
-                    <button type="button" onClick={() => setIsVisible(!isVisible)}>
+                    <button
+                        type="button"
+                        onClick={() => setIsVisible(!isVisible)}
+                    >
                         {isVisible ? "Hide" : "Show"} password
                     </button>
                 </div>
+            ) : props.inputtype === "textarea" ? (
+                <textarea
+                    id={props.id}
+                    name={props.name || props.id}
+                    {...props}
+                />
             ) : (
                 <input id={props.id} name={props.name || props.id} {...props} />
             )}
