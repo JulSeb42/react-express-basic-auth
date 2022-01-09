@@ -165,7 +165,7 @@ router.put("/forgot", (req, res, next) => {
                     let mailDetails = {
                         from: process.env.EMAIL,
                         to: email,
-                        subject: "Reset your password on Todo app",
+                        subject: "Reset your password on our app",
                         html: `Hello,<br /><br />To reset your password, <a href="${process.env.ORIGIN}/reset-password/${resetToken}/${foundUser._id}">click here</a>.`,
                     }
 
