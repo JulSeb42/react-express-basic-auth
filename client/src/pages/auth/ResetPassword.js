@@ -10,6 +10,8 @@ import Input from "../../components/forms/Input"
 
 function ResetPassword() {
     const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
+
     const handlePassword = e => setPassword(e.target.value)
 
     const navigate = useNavigate()
@@ -28,7 +30,10 @@ function ResetPassword() {
             .then(() => {
                 navigate("/login")
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                const errorDescription = err.response.data.message
+                setErrorMessage(errorDescription)
+            })
     }
 
     return (
@@ -44,6 +49,8 @@ function ResetPassword() {
                     value={password}
                 />
             </Form>
+
+            {errorMessage && <p>{errorMessage}</p>}
         </Page>
     )
 }

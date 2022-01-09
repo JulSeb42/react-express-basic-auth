@@ -17,6 +17,7 @@ function ForgotPassword() {
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
 
     const handleEmail = e => setEmail(e.target.value)
 
@@ -24,7 +25,7 @@ function ForgotPassword() {
         e.preventDefault()
 
         const requestBody = {
-            receiver: email,
+            email,
             resetToken: getRandomString(20),
         }
 
@@ -34,7 +35,10 @@ function ForgotPassword() {
                 console.log(res)
                 navigate("/login/forgot-password/email-sent")
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                const errorDescription = err.response.data.message
+                setErrorMessage(errorDescription)
+            })
     }
 
     return isLoggedIn ? (
@@ -57,6 +61,8 @@ function ForgotPassword() {
                     value={email}
                 />
             </Form>
+
+            {errorMessage && <p>{errorMessage}</p>}
         </Page>
     )
 }
