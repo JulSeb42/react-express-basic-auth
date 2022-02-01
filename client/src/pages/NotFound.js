@@ -1,10 +1,9 @@
 // Packages
 import React from "react"
+import { Font, LinkScroll as Link } from "components-react-julseb"
 
 // Components
-import * as Font from "../components/styles/Font"
 import Page from "../components/layouts/Page"
-import Link from "../components/utils/LinkScroll"
 
 function NotFound() {
     return (

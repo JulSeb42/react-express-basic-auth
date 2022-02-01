@@ -2,18 +2,11 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Font, Form, Input, LinkScroll as Link, Alert, getRandomString } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import Link from "../../components/utils/LinkScroll"
-import ErrorMessage from "../../components/forms/ErrorMessage"
-
-// Utils
-import getRandomString from "../../components/utils/getRandomString"
 
 function Signup() {
     const { loginUser } = useContext(AuthContext)
@@ -52,7 +45,7 @@ function Signup() {
     }
 
     return (
-        <Page title="Signup">
+        <Page title="Signup" template="form">
             <Font.H1>Signup</Font.H1>
 
             <Form onSubmit={handleSubmit} btnprimary="Create your account">
@@ -78,6 +71,7 @@ function Signup() {
                     id="password"
                     onChange={handlePassword}
                     value={password}
+                    password
                 />
             </Form>
 
@@ -85,7 +79,7 @@ function Signup() {
                 You already have an account? <Link to="/login">Login</Link>
             </Font.P>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

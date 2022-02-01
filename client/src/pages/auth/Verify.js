@@ -1,13 +1,11 @@
 // Packages
 import React, { useContext, useState } from "react"
 import axios from "axios"
+import { Font, LinkScroll as Link, Alert } from "components-react-julseb"
 
 // Components
 import Page from "../../components/layouts/Page"
-import * as Font from "../../components/styles/Font"
 import { AuthContext } from "../../context/auth"
-import Link from "../../components/utils/LinkScroll"
-import ErrorMessage from "../../components/forms/ErrorMessage"
 
 function Verify({ edited, setEdited }) {
     const { user, updateUser } = useContext(AuthContext)
@@ -40,7 +38,7 @@ function Verify({ edited, setEdited }) {
                 <Link to="/my-account">Go to your account</Link>.
             </Font.P>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

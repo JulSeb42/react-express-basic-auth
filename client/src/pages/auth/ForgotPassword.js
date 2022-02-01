@@ -2,17 +2,11 @@
 import React, { useContext, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import axios from "axios"
+import { Font, Form, Input, Alert, getRandomString } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import ErrorMessage from "../../components/forms/ErrorMessage"
-
-// Utils
-import getRandomString from "../../components/utils/getRandomString"
 
 function ForgotPassword() {
     const { isLoggedIn } = useContext(AuthContext)
@@ -46,7 +40,7 @@ function ForgotPassword() {
     return isLoggedIn ? (
         <Navigate to="/my-account" />
     ) : (
-        <Page title="I forgot my password">
+        <Page title="I forgot my password" template="form">
             <Font.H1>I forgot my password</Font.H1>
 
             <Font.P>
@@ -64,7 +58,7 @@ function ForgotPassword() {
                 />
             </Form>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

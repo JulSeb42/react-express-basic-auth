@@ -2,15 +2,17 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate, Navigate } from "react-router-dom"
+import {
+    Font,
+    Form,
+    Input,
+    LinkScroll as Link,
+    Alert,
+} from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import Link from "../../components/utils/LinkScroll"
-import ErrorMessage from "../../components/forms/ErrorMessage"
 
 function Login() {
     const { loginUser, isLoggedIn } = useContext(AuthContext)
@@ -43,7 +45,7 @@ function Login() {
     return isLoggedIn ? (
         <Navigate to="/my-account" />
     ) : (
-        <Page title="Login">
+        <Page title="Login" template="form">
             <Font.H1>Login</Font.H1>
 
             <Form onSubmit={handleSubmit} btnprimary="Log in">
@@ -61,6 +63,7 @@ function Login() {
                     id="password"
                     onChange={handlePassword}
                     value={password}
+                    password
                 />
             </Form>
 
@@ -72,7 +75,7 @@ function Login() {
                 You don't have an account? <Link to="/signup">Signup</Link>
             </Font.P>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

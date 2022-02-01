@@ -2,13 +2,10 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Font, Form, Input, Alert } from "components-react-julseb"
 
 // Components
 import Page from "../../components/layouts/Page"
-import * as Font from "../../components/styles/Font"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import ErrorMessage from "../../components/forms/ErrorMessage"
 
 function ResetPassword() {
     const [password, setPassword] = useState("")
@@ -39,7 +36,7 @@ function ResetPassword() {
     }
 
     return (
-        <Page title="Reset your password">
+        <Page title="Reset your password" template="form">
             <Font.H1>Reset your password</Font.H1>
 
             <Form btnprimary="Send" onSubmit={handleSubmit}>
@@ -49,10 +46,11 @@ function ResetPassword() {
                     id="password"
                     onChange={handlePassword}
                     value={password}
+                    password
                 />
             </Form>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

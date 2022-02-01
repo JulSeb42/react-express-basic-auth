@@ -2,14 +2,11 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Font, Form, Input, Alert } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import ErrorMessage from "../../components/forms/ErrorMessage"
 
 function EditPassword({ edited, setEdited }) {
     const { user, updateUser } = useContext(AuthContext)
@@ -40,7 +37,7 @@ function EditPassword({ edited, setEdited }) {
     }
 
     return (
-        <Page title="Edit your password">
+        <Page title="Edit your password" template="form">
             <Font.H1>Edit your password</Font.H1>
 
             <Form
@@ -54,10 +51,11 @@ function EditPassword({ edited, setEdited }) {
                     id="password"
                     onChange={handlePassword}
                     value={password}
+                    password
                 />
             </Form>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

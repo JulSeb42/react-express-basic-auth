@@ -1,8 +1,8 @@
 // Packages
 import React from "react"
+import { Font } from "components-react-julseb"
 
 // Components
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
 
 function Goodbye() {

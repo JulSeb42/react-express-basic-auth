@@ -8,7 +8,8 @@ import { AuthProviderWrapper } from "./context/auth"
 import App from "./App"
 
 // Styles
-import "./styles/index.css"
+import "components-react-julseb/dist/components/index.css"
+import "./styles/root.css"
 
 ReactDOM.render(
     <AuthProviderWrapper>

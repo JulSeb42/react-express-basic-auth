@@ -1,14 +1,10 @@
 // Packages
 import React, { useContext } from "react"
+import { Font, LinkScroll as Link, getFirstName } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Link from "../../components/utils/LinkScroll"
-
-// Utils
-import getFirstName from "../../components/utils/getFirstName"
 
 function MyAccount() {
     const { user } = useContext(AuthContext)

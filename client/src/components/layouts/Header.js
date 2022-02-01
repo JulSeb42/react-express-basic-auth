@@ -2,11 +2,10 @@
 import React, { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
 import styled from "styled-components"
+import { LinkScroll as Link, Variables } from "components-react-julseb"
 
 // Components
-import * as Variables from "../styles/Variables"
 import { AuthContext } from "../../context/auth"
-import Link from "../utils/LinkScroll"
 
 // Data
 import SiteData from "../data/SiteData"
@@ -23,7 +22,7 @@ const Container = styled.header`
 const Burger = styled.button`
     display: none;
 
-    @media ${Variables.Breakpoints.MobileL} {
+    @media ${Variables.Breakpoints.Mobile} {
         display: inline;
         position: relative;
         background: none;
@@ -76,7 +75,7 @@ const Nav = styled.nav`
     align-items: center;
     justify-content: flex-start;
 
-    @media ${Variables.Breakpoints.MobileL} {
+    @media ${Variables.Breakpoints.Mobile} {
         position: absolute;
         width: 100%;
         background-color: white;

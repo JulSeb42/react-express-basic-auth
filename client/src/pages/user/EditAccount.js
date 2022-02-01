@@ -2,16 +2,18 @@
 import React, { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import {
+    Font,
+    Form,
+    Input,
+    Alert,
+    LinkScroll as Link,
+} from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
-import * as Font from "../../components/styles/Font"
 import Page from "../../components/layouts/Page"
-import Form from "../../components/forms/Form"
-import Input from "../../components/forms/Input"
-import DangerZone from "../../components/forms/DangerZone"
-import Link from "../../components/utils/LinkScroll"
-import ErrorMessage from "../../components/forms/ErrorMessage"
+import DangerZone from "../../components/DangerZone"
 
 function EditAccount({ edited, setEdited }) {
     const { user, updateUser, logoutUser } = useContext(AuthContext)
@@ -54,7 +56,7 @@ function EditAccount({ edited, setEdited }) {
     }
 
     return (
-        <Page title="Edit your account">
+        <Page title="Edit your account" template="form">
             <Font.H1>Edit your account</Font.H1>
 
             <Form
@@ -78,13 +80,18 @@ function EditAccount({ edited, setEdited }) {
                 />
             </Form>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
 
             <Font.P>
                 <Link to="/my-account/edit-password">Edit your password.</Link>
             </Font.P>
 
-            <DangerZone onClick={handleDelete} />
+            <DangerZone
+                onClickPrimary={handleDelete}
+                textbtnopen="Delete your account"
+                text="Are you sure you want to delete your account?"
+                textbtndelete="Yes, delete my account"
+            />
         </Page>
     )
 }

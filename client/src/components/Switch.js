@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import axios from "axios"
+import { scrollToTop } from "components-react-julseb"
 
 // Pages
 import Home from "../pages/Home"
@@ -24,7 +25,6 @@ import EditPassword from "../pages/user/EditPassword"
 
 // Utils
 import ProtectedRoutes from "./utils/ProtectedRoutes"
-import scrollToTop from "./utils/scrollToTop"
 
 function Switch() {
     const [allUsers, setAllUsers] = useState([])
