@@ -1,6 +1,7 @@
 // Packages
 import React, { useContext } from "react"
-import { Font, LinkScroll as Link, getFirstName } from "components-react-julseb"
+import { Link } from "react-router-dom"
+import { Font, getFirstName } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"

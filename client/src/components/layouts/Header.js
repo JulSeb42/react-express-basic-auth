@@ -1,8 +1,8 @@
 // Packages
 import React, { useContext, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import styled from "styled-components"
-import { LinkScroll as Link, Variables } from "components-react-julseb"
+import { Variables } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
