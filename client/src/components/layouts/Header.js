@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react"
 import { NavLink, Link } from "react-router-dom"
 import styled from "styled-components"
-import { Variables } from "components-react-julseb"
+import { Variables, Burger } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
@@ -17,57 +17,6 @@ const Container = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: ${Variables.Margins.L} 5vw;
-`
-
-const Burger = styled.button`
-    display: none;
-
-    @media ${Variables.Breakpoints.Mobile} {
-        display: inline;
-        position: relative;
-        background: none;
-        border: none;
-        padding: 0;
-        width: 30px;
-        height: 20px;
-
-        span {
-            width: 100%;
-            background-color: black;
-            height: 2px;
-            position: absolute;
-            left: 0;
-            transition: ${Variables.Transitions.Short};
-
-            &:first-child {
-                top: 0;
-            }
-
-            &:nth-child(2) {
-                top: calc(50% - 2px / 2);
-            }
-
-            &:last-child {
-                bottom: 0;
-            }
-        }
-
-        &.open span {
-            &:first-child {
-                transform: rotate(45deg);
-                top: 45%;
-            }
-
-            &:nth-child(2) {
-                width: 0;
-            }
-
-            &:last-child {
-                transform: rotate(-45deg);
-                bottom: 45%;
-            }
-        }
-    }
 `
 
 const Nav = styled.nav`
@@ -123,7 +72,14 @@ function Header() {
                 {SiteData.Name}
             </LinkNav>
 
-            <Burger className={open} onClick={() => setIsOpen(!isOpen)}>
+            <Burger
+                className={open}
+                color="black"
+                width={24}
+                height={16}
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Open menu"
+            >
                 <span />
                 <span />
                 <span />
