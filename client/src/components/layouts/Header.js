@@ -59,6 +59,14 @@ const LinkNav = styled(NavLink)`
     }
 `
 
+const ButtonMenu = styled(Burger)`
+    display: none;
+
+    @media ${Variables.Breakpoints.Mobile} {
+        display: inline;
+    }
+`
+
 function Header() {
     const { isLoggedIn, logoutUser } = useContext(AuthContext)
 
@@ -72,18 +80,14 @@ function Header() {
                 {SiteData.Name}
             </LinkNav>
 
-            <Burger
+            <ButtonMenu
                 className={open}
                 color="black"
                 width={24}
                 height={16}
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Open menu"
-            >
-                <span />
-                <span />
-                <span />
-            </Burger>
+            />
 
             <Nav className={open}>
                 <LinkNav to="/">Home</LinkNav>
