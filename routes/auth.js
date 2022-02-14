@@ -3,12 +3,18 @@ const router = require("express").Router()
 const bcrypt = require("bcryptjs")
 const mongoose = require("mongoose")
 
+// Models
 const User = require("../models/User.model")
-let transporter = require("../utils/transporter")
 
+// Utils
+let transporter = require("../utils/transporter")
+const { regex, emailRegex } = require("../utils/regex")
+
+// Middleware
 const isLoggedIn = require("../middleware/isLoggedIn")
 const isLoggedOut = require("../middleware/isLoggedOut")
 
+// Salt
 const saltRounds = 10
 
 // Logged in user
@@ -26,7 +32,11 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
             .json({ message: "Please provide your full name." })
     }
 
-    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            message: "Please provide a valid email address.",
+        })
+    }
 
     if (!regex.test(password)) {
         return res.status(400).json({
@@ -187,8 +197,6 @@ router.post("/forgot", (req, res, next) => {
 // Reset password
 router.put("/reset-password/:token/:id", (req, res, next) => {
     const { password } = req.body
-
-    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
 
     if (!regex.test(password)) {
         return res.status(400).json({

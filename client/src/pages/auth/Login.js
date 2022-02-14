@@ -1,7 +1,7 @@
 // Packages
 import React, { useContext, useState } from "react"
 import axios from "axios"
-import { useNavigate, Navigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { Font, Form, Input, Alert } from "components-react-julseb"
 
 // Components
@@ -9,16 +9,28 @@ import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
 function Login() {
-    const { loginUser, isLoggedIn } = useContext(AuthContext)
+    // Consts
+    const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "Login",
+        textForgot: "I forgot my password.",
+        textNoAccount: "You don't have an account?",
+        linkNoAccount: "Sign up.",
+    }
+
+    // Form items
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Form handles
     const handleEmail = e => setEmail(e.target.value)
     const handlePassword = e => setPassword(e.target.value)
 
+    // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -36,11 +48,9 @@ function Login() {
             })
     }
 
-    return isLoggedIn ? (
-        <Navigate to="/my-account" />
-    ) : (
-        <Page title="Login" template="form">
-            <Font.H1>Login</Font.H1>
+    return (
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
             <Form onSubmit={handleSubmit} btnprimary="Log in">
                 <Input
@@ -53,7 +63,6 @@ function Login() {
 
                 <Input
                     label="Password"
-                    inputtype="password"
                     id="password"
                     onChange={handlePassword}
                     value={password}
@@ -62,11 +71,12 @@ function Login() {
             </Form>
 
             <Font.P>
-                <Link to="/login/forgot-password">I forgot my password.</Link>
+                <Link to="/login/forgot-password">{texts.textForgot}</Link>
             </Font.P>
 
             <Font.P>
-                You don't have an account? <Link to="/signup">Signup</Link>
+                {texts.textNoAccount}{" "}
+                <Link to="/signup">{texts.linkNoAccount}</Link>
             </Font.P>
 
             {errorMessage && <Alert color="danger">{errorMessage}</Alert>}

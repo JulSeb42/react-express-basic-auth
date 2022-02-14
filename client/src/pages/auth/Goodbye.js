@@ -6,11 +6,18 @@ import { Font } from "components-react-julseb"
 import Page from "../../components/layouts/Page"
 
 function Goodbye() {
-    return (
-        <Page title="Goodbye!">
-            <Font.H1>We're sorry to see you go!</Font.H1>
+    // Texts
+    const texts = {
+        pageTitle: "Goodbye!",
+        title: "We're sorry to see you go!",
+        body: "Your account was deleted successfully.",
+    }
 
-            <Font.P>Your account was deleted successfully.</Font.P>
+    return (
+        <Page title={texts.pageTitle}>
+            <Font.H1>{texts.title}</Font.H1>
+
+            <Font.P>{texts.body}</Font.P>
         </Page>
     )
 }

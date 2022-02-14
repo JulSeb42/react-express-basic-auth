@@ -2,12 +2,7 @@
 import React, { useContext, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import axios from "axios"
-import {
-    Font,
-    Form,
-    Input,
-    Alert,
-} from "components-react-julseb"
+import { Font, Form, Input, Alert } from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
@@ -15,22 +10,37 @@ import Page from "../../components/layouts/Page"
 import DangerZone from "../../components/DangerZone"
 
 function EditAccount({ edited, setEdited }) {
+    // Consts
     const { user, updateUser, logoutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "Edit your account",
+        saveBtn: "Save changes",
+        linkPassword: "Edit your password.",
+
+        // Delete
+        textbtnopen: "Delete your account",
+        textalert: "Are you sure you want to delete your account?",
+        textbtndelete: "Yes, delete my account",
+    }
+
+    // Form items
     const [fullName, setFullName] = useState(user.fullName)
     const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Form handles
     const handleFullName = e => setFullName(e.target.value)
 
-    // Edit account
+    // Form submit
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = { id: user._id, fullName }
+        const requestBody = { fullName }
 
         axios
-            .put("/users/edit", requestBody)
+            .put(`/users/edit/${user._id}`, requestBody)
             .then(res => {
                 const { user } = res.data
                 updateUser(user)
@@ -55,11 +65,11 @@ function EditAccount({ edited, setEdited }) {
     }
 
     return (
-        <Page title="Edit your account" template="form">
-            <Font.H1>Edit your account</Font.H1>
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
             <Form
-                btnprimary="Save changes"
+                btnprimary={texts.saveBtn}
                 btncancel="/my-account"
                 onSubmit={handleSubmit}
             >
@@ -82,14 +92,14 @@ function EditAccount({ edited, setEdited }) {
             {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
 
             <Font.P>
-                <Link to="/my-account/edit-password">Edit your password.</Link>
+                <Link to="/my-account/edit-password">{texts.linkPassword}</Link>
             </Font.P>
 
             <DangerZone
                 onClickPrimary={handleDelete}
-                textbtnopen="Delete your account"
-                text="Are you sure you want to delete your account?"
-                textbtndelete="Yes, delete my account"
+                textbtnopen={texts.textbtnopen}
+                text={texts.textalert}
+                textbtndelete={texts.textbtndelete}
             />
         </Page>
     )

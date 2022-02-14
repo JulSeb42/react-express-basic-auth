@@ -8,17 +8,28 @@ import { Font, Form, Input, Alert } from "components-react-julseb"
 import Page from "../../components/layouts/Page"
 
 function ResetPassword() {
-    const [password, setPassword] = useState("")
-    const [errorMessage, setErrorMessage] = useState(undefined)
-
-    const handlePassword = e => setPassword(e.target.value)
-
+    // Consts
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "Reset your password",
+        btnForm: "Send",
+    }
+
+    // Get token and user id
     const data = window.location.href.split("/")
     const token = data[4]
     const id = data[5]
 
+    // Form items
+    const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
+
+    // Form handles
+    const handlePassword = e => setPassword(e.target.value)
+
+    // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -36,13 +47,12 @@ function ResetPassword() {
     }
 
     return (
-        <Page title="Reset your password" template="form">
-            <Font.H1>Reset your password</Font.H1>
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
-            <Form btnprimary="Send" onSubmit={handleSubmit}>
+            <Form btnprimary={texts.btnForm} onSubmit={handleSubmit}>
                 <Input
                     label="New password"
-                    inputtype="password"
                     id="password"
                     onChange={handlePassword}
                     value={password}

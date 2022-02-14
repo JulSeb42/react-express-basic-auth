@@ -2,11 +2,11 @@
 import React, { useState, useEffect, createContext } from "react"
 import axios from "axios"
 
+// Utils
 import localStorageExpires from "../components/utils/localStorageExpires"
 
+// Create context
 const AuthContext = createContext()
-
-// const API_URL = "http://localhost:5005"
 
 function AuthProviderWrapper(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)

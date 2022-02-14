@@ -1,17 +1,25 @@
 // Packages
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Font, Alert } from "components-react-julseb"
+import { Font } from "components-react-julseb"
 
 // Components
 import Page from "../../components/layouts/Page"
 import { AuthContext } from "../../context/auth"
 
 function Verify({ edited, setEdited }) {
+    // Context
     const { user, updateUser } = useContext(AuthContext)
-    const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Texts
+    const texts = {
+        title: "Your account is verified!",
+        text: "You can now access all the functionalities on our website.",
+        link: "Go to your account.",
+    }
+
+    // Verify user
     const requestBody = {
         id: user._id,
         verifyToken: user.verifyToken,
@@ -25,21 +33,15 @@ function Verify({ edited, setEdited }) {
             updateUser(user)
             setEdited(!edited)
         })
-        .catch(err => {
-            const errorDescription = err.response.data.message
-            setErrorMessage(errorDescription)
-        })
+        .catch(err => console.log(err))
 
     return (
-        <Page title="Your account is verified!">
-            <Font.H1>Your account is verified!</Font.H1>
+        <Page title={texts.title}>
+            <Font.H1>{texts.title}</Font.H1>
 
             <Font.P>
-                You can now access all the functionalities on our website.{" "}
-                <Link to="/my-account">Go to your account</Link>.
+                {texts.text} <Link to="/my-account">{texts.link}</Link>
             </Font.P>
-
-            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }

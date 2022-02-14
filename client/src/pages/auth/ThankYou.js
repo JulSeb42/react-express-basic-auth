@@ -5,19 +5,17 @@ import { Font } from "components-react-julseb"
 // Components
 import Page from "../../components/layouts/Page"
 
-// Title
-const title = "Thank you for creating your account!"
-
 function ThankYou() {
+    // Texts
+    const texts = {
+        title: "Thank you for creating your account!",
+        body: "You are now logged in. We just sent you an email to verify your account, please click on the link to access all the functionalities.",
+    }
     return (
-        <Page title={title}>
-            <Font.H1>{title}</Font.H1>
+        <Page title={texts.title}>
+            <Font.H1>{texts.title}</Font.H1>
 
-            <Font.P>
-                You are now logged in. We just sent you an email to verify your
-                account, please click on the link to access all the
-                functionalities.
-            </Font.P>
+            <Font.P>{texts.body}</Font.P>
         </Page>
     )
 }

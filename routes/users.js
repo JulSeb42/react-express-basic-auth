@@ -1,8 +1,14 @@
 // Packages
 const router = require("express").Router()
-const User = require("../models/User.model")
 const bcrypt = require("bcryptjs")
 
+// Models
+const User = require("../models/User.model")
+
+// Utils
+const { regex } = require("../utils/regex")
+
+// Salt
 const saltRounds = 10
 
 // Get all users
@@ -22,10 +28,10 @@ router.get("/user/:id", (req, res, next) => {
 })
 
 // Edit account
-router.put("/edit", (req, res, next) => {
-    const { id, fullName } = req.body
+router.put("/edit/:id", (req, res, next) => {
+    const { fullName } = req.body
 
-    User.findByIdAndUpdate(id, { fullName }, { new: true })
+    User.findByIdAndUpdate(req.params.id, { fullName }, { new: true })
         .then(updatedUser => {
             res.status(200).json({ user: updatedUser })
         })
@@ -33,10 +39,8 @@ router.put("/edit", (req, res, next) => {
 })
 
 // Edit password
-router.put("/edit-password", (req, res, next) => {
-    const { id, password } = req.body
-
-    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+router.put("/edit-password/:id", (req, res, next) => {
+    const { password } = req.body
 
     if (!regex.test(password)) {
         return res.status(400).json({
@@ -49,7 +53,9 @@ router.put("/edit-password", (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))
         .then(hashedPassword => {
-            return User.findByIdAndUpdate(id, { password: hashedPassword })
+            return User.findByIdAndUpdate(req.params.id, {
+                password: hashedPassword,
+            })
                 .then(updatedUser => {
                     res.status(200).json({ user: updatedUser })
                 })

@@ -9,21 +9,31 @@ import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
 function EditPassword({ edited, setEdited }) {
+    // Consts
     const { user, updateUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "Edit your password",
+        btnSave: "Save changes",
+    }
+
+    // Form items
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Form handles
     const handlePassword = e => setPassword(e.target.value)
 
+    // Submit
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = { id: user._id, password }
+        const requestBody = { password }
 
         axios
-            .put("/users/edit-password", requestBody)
+            .put(`/users/edit-password/${user._id}`, requestBody)
             .then(res => {
                 const { user } = res.data
                 updateUser(user)
@@ -37,17 +47,16 @@ function EditPassword({ edited, setEdited }) {
     }
 
     return (
-        <Page title="Edit your password" template="form">
-            <Font.H1>Edit your password</Font.H1>
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
             <Form
-                btnprimary="Save changes"
+                btnprimary={texts.btnSave}
                 btncancel="/my-account"
                 onSubmit={handleSubmit}
             >
                 <Input
                     label="New password"
-                    inputtype="password"
                     id="password"
                     onChange={handlePassword}
                     value={password}

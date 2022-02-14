@@ -6,11 +6,16 @@ import { Font } from "components-react-julseb"
 import Page from "../../components/layouts/Page"
 
 function ForgotSent() {
+    // Texts
+    const texts = {
+        title: "Email sent successfully!",
+        body: "We just sent you an email with a link to reset your password.",
+    }
     return (
-        <Page title="Email sent successfully">
-            <Font.H1>Email sent successfully</Font.H1>
+        <Page title={texts.title}>
+            <Font.H1>{texts.title}</Font.H1>
 
-            <Font.P>We just sent you an email with a link to reset your password.</Font.P>
+            <Font.P>{texts.body}</Font.P>
         </Page>
     )
 }

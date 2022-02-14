@@ -1,22 +1,37 @@
 // Packages
-import React, { useContext, useState } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import { Font, Form, Input, Alert, getRandomString } from "components-react-julseb"
+import {
+    Font,
+    Form,
+    Input,
+    Alert,
+    getRandomString,
+} from "components-react-julseb"
 
 // Components
-import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
 function ForgotPassword() {
-    const { isLoggedIn } = useContext(AuthContext)
+    // Consts
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "I forgot my password",
+        body: "Please enter your email address, we will send you a link to reset your password.",
+        btnSend: "Send",
+    }
+
+    // Form items
     const [email, setEmail] = useState("")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Form handles
     const handleEmail = e => setEmail(e.target.value)
 
+    // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -37,18 +52,13 @@ function ForgotPassword() {
             })
     }
 
-    return isLoggedIn ? (
-        <Navigate to="/my-account" />
-    ) : (
-        <Page title="I forgot my password" template="form">
-            <Font.H1>I forgot my password</Font.H1>
+    return (
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
-            <Font.P>
-                Please enter your email address, we will send you a link to
-                reset your password.
-            </Font.P>
+            <Font.P>{texts.body}</Font.P>
 
-            <Form btnprimary="Send" onSubmit={handleSubmit}>
+            <Form btnprimary={texts.btnSend} onSubmit={handleSubmit}>
                 <Input
                     label="Email"
                     type="email"

@@ -15,18 +15,30 @@ import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
 function Signup() {
+    // Consts
     const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    // Texts
+    const texts = {
+        title: "Signup",
+        btnForm: "Create your account",
+        textAlready: "You already have an account?",
+        textLinkLogin: "Login",
+    }
+
+    // Form items
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
+    // Form handles
     const handleFullName = e => setFullName(e.target.value)
     const handleEmail = e => setEmail(e.target.value)
     const handlePassword = e => setPassword(e.target.value)
 
+    // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -51,13 +63,12 @@ function Signup() {
     }
 
     return (
-        <Page title="Signup" template="form">
-            <Font.H1>Signup</Font.H1>
+        <Page title={texts.title} template="form">
+            <Font.H1>{texts.title}</Font.H1>
 
-            <Form onSubmit={handleSubmit} btnprimary="Create your account">
+            <Form onSubmit={handleSubmit} btnprimary={texts.btnForm}>
                 <Input
                     label="Full name"
-                    type="text"
                     id="fullName"
                     onChange={handleFullName}
                     value={fullName}
@@ -73,7 +84,6 @@ function Signup() {
 
                 <Input
                     label="Password"
-                    inputtype="password"
                     id="password"
                     onChange={handlePassword}
                     value={password}
@@ -82,7 +92,8 @@ function Signup() {
             </Form>
 
             <Font.P>
-                You already have an account? <Link to="/login">Login</Link>
+                {texts.textAlready}{" "}
+                <Link to="/login">{texts.textLinkLogin}</Link>
             </Font.P>
 
             {errorMessage && <Alert color="danger">{errorMessage}</Alert>}

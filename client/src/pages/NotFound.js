@@ -7,12 +7,18 @@ import { Font } from "components-react-julseb"
 import Page from "../components/layouts/Page"
 
 function NotFound() {
+    // Texts
+    const texts = {
+        title: "Page not found!",
+        link: "Back to homepage.",
+    }
+
     return (
-        <Page title="Not found!">
-            <Font.H1>Page not found!</Font.H1>
+        <Page title={texts.title}>
+            <Font.H1>{texts.title}</Font.H1>
 
             <Font.P>
-                <Link to="/">Back to homepage.</Link>
+                <Link to="/">{texts.link}</Link>
             </Font.P>
         </Page>
     )

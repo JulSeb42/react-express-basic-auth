@@ -6,9 +6,14 @@ import { Font } from "components-react-julseb"
 import Page from "../components/layouts/Page"
 
 function Home() {
+    // Texts
+    const texts = {
+        title: "Homepage",
+    }
+
     return (
-        <Page title="Home">
-            <Font.H1>Homepage</Font.H1>
+        <Page title={texts.title}>
+            <Font.H1>{texts.title}</Font.H1>
         </Page>
     )
 }
