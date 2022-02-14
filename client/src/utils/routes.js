@@ -8,7 +8,9 @@ import Login from "../pages/auth/Login"
 import ThankYou from "../pages/auth/ThankYou"
 import ForgotPassword from "../pages/auth/ForgotPassword"
 import ForgotSent from "../pages/auth/ForgotSent"
+import ResetPassword from "../pages/auth/ResetPassword"
 import Goodbye from "../pages/auth/Goodbye"
+import Verify from "../pages/auth/Verify"
 
 // User
 import MyAccount from "../pages/user/MyAccount"
@@ -55,17 +57,24 @@ const routes = [
         edit: false,
     },
     {
-        path: "/forgot-password",
+        path: "/login/forgot-password",
         element: ForgotPassword,
         protected: false,
         anon: true,
         edit: false,
     },
     {
-        path: "/forgot-password/email-sent",
+        path: "/login/forgot-password/email-sent",
         element: ForgotSent,
         protected: false,
         anon: true,
+        edit: false,
+    },
+    {
+        path: "/reset-password/:token/:id",
+        element: ResetPassword,
+        protected: false,
+        anon: false,
         edit: false,
     },
     {
@@ -74,6 +83,13 @@ const routes = [
         protected: false,
         anon: true,
         edit: false,
+    },
+    {
+        path: "/verify/:token/:id",
+        element: Verify,
+        protected: true,
+        anon: true,
+        edit: true,
     },
 
     // User
