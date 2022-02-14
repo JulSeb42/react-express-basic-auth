@@ -24,6 +24,10 @@ const Nav = styled.nav`
     align-items: center;
     justify-content: flex-start;
 
+    & > *:not(:last-child) {
+        margin-right: ${Variables.Margins.M};
+    }
+
     @media ${Variables.Breakpoints.Mobile} {
         position: absolute;
         width: 100%;
@@ -34,6 +38,11 @@ const Nav = styled.nav`
         flex-direction: column;
         align-items: flex-start;
         transition: ${Variables.Transitions.Short};
+
+        & > *:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: ${Variables.Margins.M};
+        }
 
         &.open {
             top: 72px;
@@ -52,10 +61,6 @@ const LinkNav = styled(NavLink)`
 
     &.active {
         font-weight: ${Variables.FontWeights.Bold};
-    }
-
-    &:not(:last-child) {
-        margin-right: ${Variables.Margins.M};
     }
 `
 
