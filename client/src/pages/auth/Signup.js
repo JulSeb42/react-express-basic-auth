@@ -2,7 +2,13 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
-import { Font, Form, Input, Alert, getRandomString } from "components-react-julseb"
+import {
+    Font,
+    Form,
+    Input,
+    Alert,
+    getRandomString,
+} from "components-react-julseb"
 
 // Components
 import { AuthContext } from "../../context/auth"
@@ -33,10 +39,10 @@ function Signup() {
         }
 
         axios
-            .put("/auth/signup", requestBody)
+            .post("/auth/signup", requestBody)
             .then(res => {
-                loginUser(res.data)
                 navigate("/thank-you")
+                loginUser(res.data)
             })
             .catch(err => {
                 const errorDescription = err.response.data.message

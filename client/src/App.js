@@ -1,9 +1,9 @@
 // Packages
 import React from "react"
+import { GlobalStyles } from "components-react-julseb"
 
 // Components
-import { GlobalStyles } from "components-react-julseb"
-import Switch from "./components/Switch"
+import Switch from "./utils/Switch"
 
 function App() {
     return (

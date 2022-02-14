@@ -25,7 +25,7 @@ function Login() {
         const requestBody = { email, password }
 
         axios
-            .put("/auth/login", requestBody)
+            .post("/auth/login", requestBody)
             .then(res => {
                 loginUser(res.data)
                 navigate("/")

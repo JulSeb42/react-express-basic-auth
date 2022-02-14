@@ -17,7 +17,7 @@ router.get("/loggedin", (req, res) => {
 })
 
 // Signup
-router.put("/signup", isLoggedOut, (req, res, next) => {
+router.post("/signup", isLoggedOut, (req, res, next) => {
     const { fullName, email, password, verified, verifyToken } = req.body
 
     if (!fullName) {
@@ -89,7 +89,7 @@ router.put("/signup", isLoggedOut, (req, res, next) => {
 })
 
 // Login
-router.put("/login", isLoggedOut, (req, res, next) => {
+router.post("/login", isLoggedOut, (req, res, next) => {
     const { email, password } = req.body
 
     if (!email) {
@@ -126,7 +126,7 @@ router.put("/login", isLoggedOut, (req, res, next) => {
 })
 
 // Logout
-router.put("/logout", isLoggedIn, (req, res) => {
+router.post("/logout", isLoggedIn, (req, res) => {
     req.session.destroy(err => {
         if (err) {
             return res.status(500).json({ message: err.message })
@@ -147,7 +147,7 @@ router.put("/verify", (req, res, next) => {
 })
 
 // Forgot password
-router.put("/forgot", (req, res, next) => {
+router.post("/forgot", (req, res, next) => {
     const { email, resetToken } = req.body
 
     User.findOne({ email })

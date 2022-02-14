@@ -22,7 +22,7 @@ function AuthProviderWrapper(props) {
     }
 
     const logoutUser = () => {
-        axios.put("/auth/logout").then(() => {
+        axios.post("/auth/logout").then(() => {
             localStorage.removeItem("isLoggedIn")
             localStorage.removeItem("user")
             setIsLoggedIn(false)
