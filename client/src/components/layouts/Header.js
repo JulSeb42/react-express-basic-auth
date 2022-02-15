@@ -72,7 +72,7 @@ const ButtonMenu = styled(Burger)`
     }
 `
 
-function Header() {
+const Header = () => {
     const { isLoggedIn, logoutUser } = useContext(AuthContext)
 
     // Burger

@@ -9,7 +9,7 @@ import routes from "./routes"
 import ProtectedRoutes from "./ProtectedRoutes"
 import AnonRoutes from "./AnonRoutes"
 
-function Switch() {
+const Switch = () => {
     const [edited, setEdited] = useState(false)
 
     return (

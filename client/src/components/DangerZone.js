@@ -17,7 +17,7 @@ const Container = styled(Alert)`
     }
 `
 
-function DangerZone(props) {
+const DangerZone = (props) => {
     const [isOpen, setIsOpen] = useState(false)
     const visible = isOpen ? "none" : "block"
 

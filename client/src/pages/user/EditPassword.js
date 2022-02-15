@@ -8,7 +8,7 @@ import { Font, Form, Input, Alert } from "components-react-julseb"
 import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
-function EditPassword({ edited, setEdited }) {
+const EditPassword = ({ edited, setEdited }) => {
     // Consts
     const { user, updateUser } = useContext(AuthContext)
     const navigate = useNavigate()

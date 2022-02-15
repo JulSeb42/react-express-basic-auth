@@ -8,7 +8,7 @@ import localStorageExpires from "../components/utils/localStorageExpires"
 // Create context
 const AuthContext = createContext()
 
-function AuthProviderWrapper(props) {
+const AuthProviderWrapper = props => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)

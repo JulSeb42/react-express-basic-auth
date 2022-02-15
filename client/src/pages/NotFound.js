@@ -6,7 +6,7 @@ import { Font } from "components-react-julseb"
 // Components
 import Page from "../components/layouts/Page"
 
-function NotFound() {
+const NotFound = () => {
     // Texts
     const texts = {
         title: "Page not found!",

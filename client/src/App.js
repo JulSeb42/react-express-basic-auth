@@ -5,7 +5,7 @@ import { GlobalStyles } from "components-react-julseb"
 // Components
 import Switch from "./utils/Switch"
 
-function App() {
+const App = () => {
     return (
         <>
             <GlobalStyles />

@@ -8,7 +8,7 @@ import { Font } from "components-react-julseb"
 import Page from "../../components/layouts/Page"
 import { AuthContext } from "../../context/auth"
 
-function Verify({ edited, setEdited }) {
+const Verify = ({ edited, setEdited }) => {
     // Context
     const { user, updateUser } = useContext(AuthContext)
 

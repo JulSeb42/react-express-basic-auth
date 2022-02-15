@@ -6,7 +6,7 @@ import { PageLoading } from "components-react-julseb"
 // Components
 import { AuthContext } from "../context/auth"
 
-function ProtectedRoutes({ children, redirectTo }) {
+const ProtectedRoutes = ({ children, redirectTo }) => {
     const { isLoggedIn, isLoading } = useContext(AuthContext)
 
     if (isLoading) return <PageLoading />

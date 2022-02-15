@@ -7,7 +7,7 @@ import { Font, getFirstName } from "components-react-julseb"
 import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
-function MyAccount() {
+const MyAccount = () => {
     // Context
     const { user } = useContext(AuthContext)
 

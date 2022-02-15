@@ -6,7 +6,7 @@ import { PageLoading } from "components-react-julseb"
 // Components
 import { AuthContext } from "../context/auth"
 
-function AnonRoutes({ children, redirectTo }) {
+const AnonRoutes = ({ children, redirectTo }) => {
     const { isLoggedIn, isLoading } = useContext(AuthContext)
 
     if (isLoading) return <PageLoading />

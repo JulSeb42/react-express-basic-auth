@@ -8,7 +8,7 @@ import Header from "./Header"
 // Data
 import SiteData from "../data/SiteData"
 
-function Page(props) {
+const Page = props => {
     return (
         <>
             <Helmet

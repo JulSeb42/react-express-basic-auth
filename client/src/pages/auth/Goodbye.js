@@ -5,7 +5,7 @@ import { Font } from "components-react-julseb"
 // Components
 import Page from "../../components/layouts/Page"
 
-function Goodbye() {
+const Goodbye = () => {
     // Texts
     const texts = {
         pageTitle: "Goodbye!",

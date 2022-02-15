@@ -13,7 +13,7 @@ import {
 // Components
 import Page from "../../components/layouts/Page"
 
-function ForgotPassword() {
+const ForgotPassword = () => {
     // Consts
     const navigate = useNavigate()
 

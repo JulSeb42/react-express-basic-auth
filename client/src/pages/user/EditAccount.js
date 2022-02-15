@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 import DangerZone from "../../components/DangerZone"
 
-function EditAccount({ edited, setEdited }) {
+const EditAccount = ({ edited, setEdited }) => {
     // Consts
     const { user, updateUser, logoutUser } = useContext(AuthContext)
     const navigate = useNavigate()

@@ -14,7 +14,7 @@ import {
 import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
-function Signup() {
+const Signup = () => {
     // Consts
     const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()

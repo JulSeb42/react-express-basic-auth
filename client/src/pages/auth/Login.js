@@ -8,7 +8,7 @@ import { Font, Form, Input, Alert } from "components-react-julseb"
 import { AuthContext } from "../../context/auth"
 import Page from "../../components/layouts/Page"
 
-function Login() {
+const Login = () => {
     // Consts
     const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()

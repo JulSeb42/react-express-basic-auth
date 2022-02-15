@@ -5,7 +5,7 @@ import { Font } from "components-react-julseb"
 // Components
 import Page from "../../components/layouts/Page"
 
-function ForgotSent() {
+const ForgotSent = () => {
     // Texts
     const texts = {
         title: "Email sent successfully!",
