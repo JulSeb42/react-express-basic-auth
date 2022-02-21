@@ -1,7 +1,10 @@
 // Packages
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { Font, getFirstName } from "components-react-julseb"
+import { Font, getFirstName, PageLoading } from "components-react-julseb"
+
+// API
+import getPopulatedUser from "../../context/populatedUser"
 
 // Components
 import { AuthContext } from "../../context/auth"
@@ -18,11 +21,26 @@ const MyAccount = () => {
         editAccount: "Edit your account.",
     }
 
-    return (
-        <Page title={user.fullName}>
+    // Get populatedUser
+    const [populatedUser, setPopulatedUser] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        getPopulatedUser(user._id).then(res => {
+            setPopulatedUser(res)
+            setIsLoading(false)
+        })
+    }, [user._id])
+
+    return isLoading ? (
+        <PageLoading />
+    ) : (
+        <Page title={populatedUser.fullName}>
             <Font.H1>{texts.title}</Font.H1>
 
-            {!user.verified && <Font.P>{texts.accountNotVerified}</Font.P>}
+            {!populatedUser.verified && (
+                <Font.P>{texts.accountNotVerified}</Font.P>
+            )}
 
             <Font.P>
                 <Link to="/my-account/edit">{texts.editAccount}</Link>

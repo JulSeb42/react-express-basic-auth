@@ -1,4 +1,11 @@
-// Get populated user from local storage
-const populatedUser = JSON.parse(localStorage.getItem("user"))
+// Packages
+import axios from "axios"
 
-export default populatedUser
+const getPopulatedUser = id => {
+    return axios
+        .get(`/users/user/${id}`)
+        .then(res => res.data)
+        .catch(err => console.log(err))
+}
+
+export default getPopulatedUser
