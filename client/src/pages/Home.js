@@ -7,13 +7,11 @@ import Page from "../components/layouts/Page"
 
 const Home = () => {
     // Texts
-    const texts = {
-        title: "Homepage",
-    }
+    const title = "Homepage"
 
     return (
-        <Page title={texts.title}>
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title}>
+            <Font.H1>{title}</Font.H1>
         </Page>
     )
 }

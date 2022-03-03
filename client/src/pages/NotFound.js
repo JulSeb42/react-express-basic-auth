@@ -8,17 +8,14 @@ import Page from "../components/layouts/Page"
 
 const NotFound = () => {
     // Texts
-    const texts = {
-        title: "Page not found!",
-        link: "Back to homepage.",
-    }
+    const title = "Page not found"
 
     return (
-        <Page title={texts.title}>
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title}>
+            <Font.H1>{title}</Font.H1>
 
             <Font.P>
-                <Link to="/">{texts.link}</Link>
+                <Link to="/">Back to homepage.</Link>
             </Font.P>
         </Page>
     )

@@ -12,7 +12,7 @@ const { regex } = require("../utils/regex")
 const saltRounds = 10
 
 // Get all users
-router.get("/user", (req, res, next) => {
+router.get("/all-users", (req, res, next) => {
     User.find()
         .then(userFromDb => {
             res.status(200).json(userFromDb)

@@ -14,10 +14,7 @@ const EditPassword = ({ edited, setEdited }) => {
     const navigate = useNavigate()
 
     // Texts
-    const texts = {
-        title: "Edit your password",
-        btnSave: "Save changes",
-    }
+    const title = "Edit your password"
 
     // Form items
     const [password, setPassword] = useState("")
@@ -47,11 +44,11 @@ const EditPassword = ({ edited, setEdited }) => {
     }
 
     return (
-        <Page title={texts.title} template="form">
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title} template="form">
+            <Font.H1>{title}</Font.H1>
 
             <Form
-                btnprimary={texts.btnSave}
+                btnprimary="Save changes"
                 btncancel="/my-account"
                 onSubmit={handleSubmit}
             >

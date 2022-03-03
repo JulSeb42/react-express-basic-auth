@@ -18,11 +18,7 @@ const ForgotPassword = () => {
     const navigate = useNavigate()
 
     // Texts
-    const texts = {
-        title: "I forgot my password",
-        body: "Please enter your email address, we will send you a link to reset your password.",
-        btnSend: "Send",
-    }
+    const title = "I forgot my password"
 
     // Form items
     const [email, setEmail] = useState("")
@@ -53,12 +49,15 @@ const ForgotPassword = () => {
     }
 
     return (
-        <Page title={texts.title} template="form">
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title} template="form">
+            <Font.H1>{title}</Font.H1>
 
-            <Font.P>{texts.body}</Font.P>
+            <Font.P>
+                Please enter your email address, we will send you a link to
+                reset your password.
+            </Font.P>
 
-            <Form btnprimary={texts.btnSend} onSubmit={handleSubmit}>
+            <Form btnprimary="Send" onSubmit={handleSubmit}>
                 <Input
                     label="Email"
                     type="email"

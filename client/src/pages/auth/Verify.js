@@ -13,11 +13,7 @@ const Verify = ({ edited, setEdited }) => {
     const { user, updateUser } = useContext(AuthContext)
 
     // Texts
-    const texts = {
-        title: "Your account is verified!",
-        text: "You can now access all the functionalities on our website.",
-        link: "Go to your account.",
-    }
+    const title = "Your account is verified!"
 
     // Verify user
     const requestBody = {
@@ -36,11 +32,12 @@ const Verify = ({ edited, setEdited }) => {
         .catch(err => console.log(err))
 
     return (
-        <Page title={texts.title}>
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title}>
+            <Font.H1>{title}</Font.H1>
 
             <Font.P>
-                {texts.text} <Link to="/my-account">{texts.link}</Link>
+                You can now access all the functionalities on our website.{" "}
+                <Link to="/my-account">Go to your account.</Link>
             </Font.P>
         </Page>
     )

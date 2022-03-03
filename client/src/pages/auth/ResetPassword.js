@@ -12,10 +12,7 @@ const ResetPassword = () => {
     const navigate = useNavigate()
 
     // Texts
-    const texts = {
-        title: "Reset your password",
-        btnForm: "Send",
-    }
+    const title = "Reset your password"
 
     // Get token and user id
     const data = window.location.href.split("/")
@@ -47,10 +44,10 @@ const ResetPassword = () => {
     }
 
     return (
-        <Page title={texts.title} template="form">
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title} template="form">
+            <Font.H1>{title}</Font.H1>
 
-            <Form btnprimary={texts.btnForm} onSubmit={handleSubmit}>
+            <Form btnprimary="Send" onSubmit={handleSubmit}>
                 <Input
                     label="New password"
                     id="password"

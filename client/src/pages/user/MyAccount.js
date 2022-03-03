@@ -14,13 +14,6 @@ const MyAccount = () => {
     // Context
     const { user } = useContext(AuthContext)
 
-    // Texts
-    const texts = {
-        title: `Hello ${getFirstName(user.fullName)}`,
-        accountNotVerified: "Your account is not verified.",
-        editAccount: "Edit your account.",
-    }
-
     // Get populatedUser
     const [populatedUser, setPopulatedUser] = useState()
     const [isLoading, setIsLoading] = useState(true)
@@ -32,19 +25,23 @@ const MyAccount = () => {
         })
     }, [user._id])
 
-    return isLoading ? (
-        <PageLoading />
-    ) : (
-        <Page title={populatedUser.fullName}>
-            <Font.H1>{texts.title}</Font.H1>
+    return (
+        <Page title={user.fullName}>
+            {isLoading ? (
+                <PageLoading />
+            ) : (
+                <>
+                    <Font.H1>Hello {getFirstName(user.fullName)}</Font.H1>
 
-            {!populatedUser.verified && (
-                <Font.P>{texts.accountNotVerified}</Font.P>
+                    {!populatedUser.verified && (
+                        <Font.P>Your account is not verified.</Font.P>
+                    )}
+
+                    <Font.P>
+                        <Link to="/my-account/edit">Edit your account.</Link>
+                    </Font.P>
+                </>
             )}
-
-            <Font.P>
-                <Link to="/my-account/edit">{texts.editAccount}</Link>
-            </Font.P>
         </Page>
     )
 }

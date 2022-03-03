@@ -15,16 +15,7 @@ const EditAccount = ({ edited, setEdited }) => {
     const navigate = useNavigate()
 
     // Texts
-    const texts = {
-        title: "Edit your account",
-        saveBtn: "Save changes",
-        linkPassword: "Edit your password.",
-
-        // Delete
-        textbtnopen: "Delete your account",
-        textalert: "Are you sure you want to delete your account?",
-        textbtndelete: "Yes, delete my account",
-    }
+    const title = "Edit your account"
 
     // Form items
     const [fullName, setFullName] = useState(user.fullName)
@@ -65,11 +56,11 @@ const EditAccount = ({ edited, setEdited }) => {
     }
 
     return (
-        <Page title={texts.title} template="form">
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title} template="form">
+            <Font.H1>{title}</Font.H1>
 
             <Form
-                btnprimary={texts.saveBtn}
+                btnprimary="Save changes"
                 btncancel="/my-account"
                 onSubmit={handleSubmit}
             >
@@ -92,14 +83,14 @@ const EditAccount = ({ edited, setEdited }) => {
             {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
 
             <Font.P>
-                <Link to="/my-account/edit-password">{texts.linkPassword}</Link>
+                <Link to="/my-account/edit-password">Edit your password.</Link>
             </Font.P>
 
             <DangerZone
                 onClickPrimary={handleDelete}
-                textbtnopen={texts.textbtnopen}
-                text={texts.textalert}
-                textbtndelete={texts.textbtndelete}
+                textbtnopen="Delete your account"
+                text="Are you sure you want to delete your account?"
+                textbtndelete="Yes, delete my account"
             />
         </Page>
     )

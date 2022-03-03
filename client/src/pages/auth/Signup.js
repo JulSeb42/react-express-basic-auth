@@ -20,12 +20,7 @@ const Signup = () => {
     const navigate = useNavigate()
 
     // Texts
-    const texts = {
-        title: "Signup",
-        btnForm: "Create your account",
-        textAlready: "You already have an account?",
-        textLinkLogin: "Login",
-    }
+    const title = "Sign up"
 
     // Form items
     const [fullName, setFullName] = useState("")
@@ -63,10 +58,10 @@ const Signup = () => {
     }
 
     return (
-        <Page title={texts.title} template="form">
-            <Font.H1>{texts.title}</Font.H1>
+        <Page title={title} template="form">
+            <Font.H1>{title}</Font.H1>
 
-            <Form onSubmit={handleSubmit} btnprimary={texts.btnForm}>
+            <Form onSubmit={handleSubmit} btnprimary="Create your account">
                 <Input
                     label="Full name"
                     id="fullName"
@@ -92,8 +87,7 @@ const Signup = () => {
             </Form>
 
             <Font.P>
-                {texts.textAlready}{" "}
-                <Link to="/login">{texts.textLinkLogin}</Link>
+                You already have an account? <Link to="/login">Log in</Link>.
             </Font.P>
 
             {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
